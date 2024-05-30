@@ -1,0 +1,52 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+{% load my_tags %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-xxl-3"></div>
+        <div class="col-xxl-6 text-center justify-content-center">
+            <form method="post" enctype="multipart/form-data" class="mb-4">
+                {% csrf_token %}
+                <p>Желаете удалить эту статью?</p>
+                <button type="submit" class="btn btn-danger">Подтвердить</button>
+                <a href="{% url 'blog:article' object.slug %}" class="btn btn-warning">Отмена</a>
+            </form>
+        </div>
+
+        <div class="row">
+            <div class="col-4">
+                <div class="card">
+                    {% if object.img %}
+                    <img src="{{ object.img.url }}" class="img-fluid" alt="Responsive image" width="130%">
+                    {% else %}
+                    <div class="card-body">
+                        Изображение отсутствует.
+                    </div>
+                    {% endif %}
+                </div>
+                <small class="text-muted">
+                    Автор: {{ object.author.first_name }} {{ object.author.last_name }} {{object.author.middle_name }}
+                </small><br>
+                <small class="text-muted">Просмотров: {{ object.views }}</small><br>
+                <small class="text-muted">Создано: {{ object.created_at }}</small><br>
+                <small class="text-muted">В редакции от: {{ object.created_at }}</small>
+            </div>
+
+            <div class="col-8">
+                <div class="card">
+                    <div class="card-header text-center">
+                        <p class="fs-5">{{ object.title }}</p>
+                    </div>
+                    <div class="card-body">
+                        {{ object.text }}
+                    </div>
+                </div>
+                <div class="col-xxl-4"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

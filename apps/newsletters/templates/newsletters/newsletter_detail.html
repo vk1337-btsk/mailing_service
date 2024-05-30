@@ -1,0 +1,183 @@
+{% extends '../main/base.html' %}
+{% load my_tags %}
+
+{% block content %}
+
+<!--Блок основной информации о рассылке-->
+<div class="container">
+    <div class="row">
+        <div class="col-9 ">
+            <ul>
+                <li><a>Название рассылки: {{ object.name_newsletter }}</a></li>
+                <li><a>Дата первой рассылки: {{ object.date_first_mailing }}</a></li>
+                <li><a>Периодичность рассылки: {{ object.frequency_mailing|compare_periodicity }}</a></li>
+                <li><a>Состояние рассылки: {{ object.state_mailing|compare_status }}</a></li>
+                <li><a>Статус рассылки: {{ object.is_active|yesno:"Активна,Не активна" }}</a></li>
+            </ul>
+
+            <div class="justify-content-end">
+                <div class="btn-group mb-2" role="group" aria-label="Basic outlined button group">
+
+                    {% if perms.newsletters.change_newsletters and user == object.owner %}
+                    <button type="button" class="btn btn-outline-primary shadow-sm">
+                        <a href="{% url 'newsletters:update_newsletter' object.pk %}">Редактировать</a>
+                    </button>
+                    {% endif %}
+
+                    {% if perms.newsletters.delete_newsletters and user == object.owner %}
+                    <button type="button" class="btn btn-outline-primary shadow-sm">
+                        <a href="{% url 'newsletters:delete_newsletter' object.pk %}">Удалить</a>
+                    </button>
+                    {% endif %}
+
+                    {% if perms.newsletters.set_newsletters_deactivate %}
+                    <button type="submit" class="btn btn-outline-primary shadow-sm">
+                        <a href="{% url 'newsletters:set_newsletters_status' object.pk %}">
+                            {% if user.is_active %} Деактивировать {% else %} Активировать {% endif %}
+                        </a>
+                    </button>
+                    {% endif %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--Блок с вкладками с дополнительной информацией о рассылке-->
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link active" id="clients-tab" data-bs-toggle="tab" href="#clients" role="tab"
+                           aria-controls="clients" aria-selected="true">Клиенты</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="messages-tab" data-bs-toggle="tab" href="#messages" role="tab"
+                           aria-controls="messages" aria-selected="false">Сообщение</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="history-tab" data-bs-toggle="tab" href="#history" role="tab"
+                           aria-controls="history" tabindex="-1" aria-disabled="true">История рассылок</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="card-body">
+                <div class="tab-content" id="myTabContent">
+
+                    <!--            Блок с информацией о клиентах-->
+                    <div class="tab-pane fade show active" id="clients" role="tabpanel" aria-labelledby="clients-tab">
+
+                        <div class="btn-group" role="group" aria-label="Basic outlined button group">
+                            {% if perms.newsletters.change_newsletters and user == object.owner %}
+                            <button type="button" class="btn btn-outline-primary shadow-sm">
+                                <a href="{% url 'newsletters:update_newsletter' object.pk %}"
+                                   style="color: black; text-decoration: none;">Добавить</a>
+                            </button>
+                            {% endif %}
+                            {% if perms.clients.add_clients and user == object.owner %}
+                            <button type="button" class="btn btn-outline-primary shadow-sm">
+                                <a href="{% url 'clients:create_client' %}"
+                                   style="color: black; text-decoration: none;">Создать клиента</a>
+                            </button>
+                            {% endif %}
+                        </div>
+
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">№</th>
+                                <th scope="col">Имя Фамилия Отчество</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Дата рождения</th>
+                                <th scope="col">Комментарий</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for client in object.clients.all %}
+
+                            <tr>
+                                <th scope="row">{{ forloop.counter }}</th>
+                                <td>
+                                    <a href="{% url 'clients:client' client.pk %}">
+                                        {{ client.first_name }} {{ client.last_name }} {{ client.middle_name }}
+                                    </a>
+                                </td>
+                                <td>{{ client.email }}</td>
+                                <td>{{ client.birthday }}</td>
+                                <td>{{ client.comment }}</td>
+                            </tr>
+                            {% empty %}
+                            <p>Нет клиентов</p>
+                            {% endfor %}
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!--            Блок с информацией о сообщениях-->
+                    <div class="tab-pane fade" id="messages" role="tabpanel" aria-labelledby="messages-tab">
+                        <div class="">
+                            <div class="btn-group" role="group" aria-label="Basic outlined button group">
+                                {% if perms.messages_.add_messages and user == object.owner %}
+                                <button type="button" class="btn btn-outline-primary">
+                                    <a href="{% url 'messages_:create_message' %}">Создать сообщение</a>
+                                </button>
+                                {% endif %}
+                                {% if perms.messages_.change_messages and user == object.owner %}
+                                <button type="button" class="btn btn-outline-primary">
+                                    <a href="{% url 'messages_:update_message' object.message.pk %}">
+                                        Редактировать активное сообщение
+                                    </a>
+                                </button>
+                                {% endif %}
+
+
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ object.message }}</h5>
+                                <p class="card-text">
+                                    {{ object.message.text_letter }}
+                                </p>
+                            </div>
+                            <div class="card-footer text-muted">
+                                Здесь будет доп.инфа
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--            Блок с информацией об истории рассылки-->
+                    <div class="tab-pane fade" id="history" role="tabpanel" aria-labelledby="history-tab">
+                        Попытки рассылки
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Рассылка</th>
+                                <th scope="col">Дата последней попытки</th>
+                                <th scope="col">Статус рассылки</th>
+                                <th scope="col">Ответ почтового сервера</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for attempt in object.status_mailing.all %}
+                            <tr>
+                                <th scope="row">{{ forloop.counter }}</th>
+                                <td>{{ attempt.newsletter }}</td>
+                                <td>{{ attempt.date_last_mailing }}</td>
+                                <td>{{ attempt.status_mailing }}</td>
+                                <td>{{ attempt.response_mail_server }}</td>
+                            </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock content %}

@@ -1,0 +1,32 @@
+{% extends './base.html' %}
+
+
+{% block content %}
+{% load my_tags %}
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <div class="display-5">Нам есть чем гордиться!</div>
+            <div>
+                <p class="card-text mt-3 h4">Мы обслуживаем уже {{ count_newsletters|correct_ending_mailings }}!</p>
+                <p class="card-text mt-3 h4">Из них целых {{ count_active_newsletters|correct_ending_active }}!</p>
+                <p class="card-text mt-3 h4">Рассылка осуществляется {{ count_clients|correct_ending_clients }}!</p>
+            </div>
+
+        </div>
+        <div class="col-6 list-group rig">
+            {% for article in random_articles_list %}
+            <a href="" class="list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">{{ article.title }}</h5>
+                    <small>3 days ago</small>
+                </div>
+                <p class="mb-1">{{ article.text|truncatewords:15 }}</p>
+                <small>Donec id elit non mi porta.</small>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+
+</div>
+{% endblock content %}

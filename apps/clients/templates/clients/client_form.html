@@ -1,0 +1,38 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-xxl-3"></div>
+        <div class="col-xxl-5">
+            <p class="fs-4 text-center">
+                Форма {% if object %}редактирования{% else %}создания{% endif %} клиента
+            </p>
+
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button class="btn-outline-primary" type="submit">
+                    {% if object %} Изменить {% else %} Добавить {% endif %}
+                </button>
+                {% if object %}
+                <button class="btn-outline-primary" type="button"
+                        onclick="window.location.href='{% url 'clients:client' object.pk %}'">
+                    Отмена
+                </button>
+                {% else %}
+                <button class="btn-outline-primary" type="button"
+                        onclick="window.location.href='{% url 'clients:clients_list' %}'">
+                    Отмена
+                </button>
+                {% endif %}
+
+            </form>
+        </div>
+        <div class="col-xxl-4"></div>
+    </div>
+
+</div>
+
+{% endblock content %}

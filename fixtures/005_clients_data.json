@@ -1,0 +1,54 @@
+[
+{
+    "model": "clients.clients",
+    "pk": 1,
+    "fields": {
+        "first_name": "efef@mail.ru",
+        "last_name": "ge",
+        "middle_name": "fe",
+        "email": "efef@mail.ru",
+        "comment": "",
+        "birthday": "2024-05-20",
+        "owner": 4
+    }
+},
+{
+    "model": "clients.clients",
+    "pk": 2,
+    "fields": {
+        "first_name": "Test 1",
+        "last_name": "Testov 1",
+        "middle_name": "Testovich 1",
+        "email": "test@test.com",
+        "comment": "Comment Test",
+        "birthday": "2024-05-20",
+        "owner": 3
+    }
+},
+{
+    "model": "clients.clients",
+    "pk": 3,
+    "fields": {
+        "first_name": "Test 2",
+        "last_name": "Testov 2",
+        "middle_name": "Testovich 2",
+        "email": "test@mail.ru",
+        "comment": "test",
+        "birthday": "2024-05-20",
+        "owner": 2
+    }
+},
+{
+    "model": "clients.clients",
+    "pk": 4,
+    "fields": {
+        "first_name": "Test 3",
+        "last_name": "Testov 3",
+        "middle_name": "Testovich 3",
+        "email": "test3@mail.ru",
+        "comment": "Test",
+        "birthday": "2024-05-20",
+        "owner": 1
+    }
+}
+]

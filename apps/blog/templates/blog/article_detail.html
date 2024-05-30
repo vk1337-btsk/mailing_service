@@ -1,0 +1,46 @@
+{% extends '../main/base.html' %}
+
+{% block content %}
+
+<div class="btn-group text-right" role="group" aria-label="Basic outlined button group">
+
+    {% if perms.blog.change_articles and object.author == user %}
+    <button type="button" class="btn btn-outline-primary">
+        <a href="{% url 'blog:update_article' object.slug %}">Отредактировать</a>
+    </button>
+    {% endif %}
+    {% if perms.blog.delete_articles and perms.blog.change_articles and object.author == user %}
+    <button type="button" class="btn btn-outline-primary">
+        <a href="{% url 'blog:delete_article' object.slug %}">Удалить</a>
+    </button>
+    {% endif %}
+
+</div>
+
+<div class="text-center">
+    <h3>{{ object.title }}</h3>
+</div>
+
+<div class="clearfix">
+    <div class="row">
+        <div class="col-4">
+            <div class="float-left mr-3 mb-3">
+                <img src="{{ object.img.url }}" class="img-fluid" alt="Responsive image" width="130%">
+                <small class="text-muted">
+                    Автор: {{ object.author.first_name }} {{ object.author.last_name }} {{object.author.middle_name }}
+                </small><br>
+                <small class="text-muted">Просмотров: {{ object.views }}</small><br>
+                <small class="text-muted">Создано: {{ object.created_at }}</small><br>
+                <small class="text-muted">В редакции от: {{ object.created_at }}</small>
+            </div>
+        </div>
+        <div class="col-8">
+            <div class="lh-lg fs-5">
+                {{ object.text }}
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

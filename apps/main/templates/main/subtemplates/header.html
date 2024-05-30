@@ -1,0 +1,61 @@
+<nav class="navbar navbar-expand-md " aria-label="Fourth navbar example">
+    <div class="container-xl">
+        <a class="navbar-brand me-5" href="{% url 'main:home' %}">
+            <h1 class="display-4 m-0">Сервис рассылок</h1>
+            <p class="lead d-none d-md-block  m-0">Ваши письма — наша ответственность!</p>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample04"
+                aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!--        Блок с основными ссылками-->
+        <div class="collapse navbar-collapse align-content-between flex-wrap gap-2 " id="navbarsExample04">
+            <div class="navbar-nav gap-2 ms-md-auto mb-4 mb-sm-1 mb-md-0">
+                <a class="btn btn-outline-dark shadow-sm" href=" {% url 'blog:articles_list' %}">Новости</a>
+                <a class="btn btn-outline-dark shadow-sm" href=" {% url 'main:contacts' %}">Контакты</a>
+                <a class="btn btn-outline-dark shadow-sm" href=" {% url 'main:about' %}">О нас</a>
+            </div>
+
+            <!--            Блок для авторизованного пользователя с основными меню-->
+            {% if user.is_authenticated %}
+<!--            <div class="navbar-nav gap-2 ms-md-auto mb-4 mb-sm-1 mb-md-0">-->
+                <a class="btn btn-outline-primary shadow-sm"
+                   href=" {% url 'newsletters:newsletters_list' %}">Рассылки</a>
+                <a class="btn btn-outline-primary shadow-sm"
+                   href=" {% url 'clients:clients_list' %}">Клиенты</a>
+                <a class="btn btn-outline-primary shadow-sm"
+                   href=" {% url 'messages_:messages_list' %}">Сообщения</a>
+<!--            </div>-->
+            {% endif %}
+
+            <!--            Блок входа, выхода и профиля-->
+            {% if user.is_authenticated %}
+            <div class="navbar-nav ms-md-auto gap-2">
+
+                <!--            Если авторизован - профиль и выйти-->
+                <a class="p-2 btn btn-warning mr-1" href="{% url 'users:profile' %}">
+                    {{ user.email }}
+                </a>
+                <a>
+                    <form action="{% url 'users:logout' %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="p-2 btn btn-danger">Выйти</button>
+                    </form>
+                </a>
+
+                {% else %}
+                <!--            Если не авторизован - войти и зарегистрироваться-->
+                <button class="btn btn-outline-primary " type="submit">
+                    <a href="{% url 'users:login' %}">Войти</a>
+                </button>
+                <button class="btn btn-outline-success" type="submit">
+                    <a href="{% url 'users:register' %}">Зарегистрироваться</a>
+                </button>
+            </div>
+
+            {% endif %}
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,46 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<div class="container">
+    {% if perms.clients.add_clients %}
+    <button type="button" class="btn btn-outline-primary shadow-sm">
+        <a href="{% url 'clients:create_client' %}" style="color: black; text-decoration: none;">Создать клиента</a>
+    </button>
+    {% endif %}
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            {% if perms.clients.view_all_clients %}
+            <th scope="col">Пользователь (email)</th>
+            <th scope="col">Пользователь (user name)</th>
+            {% endif %}
+            <th scope="col">Имя Фамилия Отчество</th>
+            <th scope="col">Email</th>
+            <th scope="col">Комментарий</th>
+            <th scope="col">День рождения</th>
+        </tr>
+        </thead>
+        {% for client in object_list %}
+        <tbody>
+        <tr>
+            <th scope="row">{{ forloop.counter }}</th>
+            {% if perms.clients.view_all_clients %}
+            <td><a>{{ client.owner.email }}</a></td>
+            <td><a>{{ client.owner.user_name }}</a></td>
+            {% endif %}
+            <td><a href="{% url 'clients:client' client.pk %}">
+                {{ client.first_name }} {{ client.last_name }} {{ client.middle_name }}
+            </a></td>
+            <td>{{ client.email }}</td>
+            <td>{{ client.comment }}</td>
+            <td>{{ client.birthday }}</td>
+        </tr>
+
+        </tbody>
+        {% endfor %}
+    </table>
+</div>
+
+{% endblock content %}

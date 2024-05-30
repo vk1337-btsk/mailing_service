@@ -1,0 +1,48 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+{% load my_tags %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-xxl-2">
+            <div class="btn-group" role="group" aria-label="Basic outlined button group">
+                {% if perms.messages_.change_messages and user == object.owner %}
+                <button type="button" class="btn btn-outline-primary shadow-sm">
+                    <a href="{% url 'messages_:update_message' object.pk %}">Изменить</a>
+                </button>
+                {% endif %}
+                {% if perms.messages_.delete_messages and user == object.owner %}
+                <button type="button" class="btn btn-outline-primary shadow-sm">
+                    <a href="{% url 'messages_:delete_message' object.pk %}">Удалить</a>
+                </button>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="col-xxl-3">
+            <div class="card">
+                {% if object.img_letter %}
+                <img src="{{ object.img_letter|media_url }}" class="img-fluid" alt="Responsive image">
+                {% else %}
+                <div class="card-body">
+                    Изображение отсутствует.
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="col-xxl-7">
+            <div class="card">
+                <div class="card-header text-center">
+                    <p class="fs-5">{{ object.subject_letter }}</p>
+                </div>
+                <div class="card-body">
+                    {{ object.text_letter }}
+                </div>
+            </div>
+            <div class="col-xxl-4"></div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

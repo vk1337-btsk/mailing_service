@@ -1,0 +1,108 @@
+[
+{
+    "model": "newsletters.newsletters",
+    "pk": 1,
+    "fields": {
+        "name_newsletter": "Тестовая расссылка 1 (user1)",
+        "date_first_mailing": "2024-05-31T00:00:00Z",
+        "frequency_mailing": "D",
+        "date_next_mailing": "2024-06-02T00:00:00Z",
+        "state_mailing": "C",
+        "message": 1,
+        "is_active": true,
+        "owner": 3,
+        "clients": [
+            1,
+            3,
+            2
+        ]
+    }
+},
+{
+    "model": "newsletters.newsletters",
+    "pk": 2,
+    "fields": {
+        "name_newsletter": "Тестовая рассылка 2 (user1)",
+        "date_first_mailing": "2024-05-31T00:00:00Z",
+        "frequency_mailing": "W",
+        "date_next_mailing": "2024-05-31T00:00:00Z",
+        "state_mailing": "L",
+        "message": 2,
+        "is_active": true,
+        "owner": 3,
+        "clients": [
+            1
+        ]
+    }
+},
+{
+    "model": "newsletters.newsletters",
+    "pk": 3,
+    "fields": {
+        "name_newsletter": "Тестовая рассылка 3 (user1)",
+        "date_first_mailing": "2024-05-31T00:00:00Z",
+        "frequency_mailing": "M",
+        "date_next_mailing": "2024-07-30T00:00:00Z",
+        "state_mailing": "F",
+        "message": 3,
+        "is_active": true,
+        "owner": 3,
+        "clients": [
+            1,
+            3
+        ]
+    }
+},
+{
+    "model": "newsletters.newsletters",
+    "pk": 4,
+    "fields": {
+        "name_newsletter": "Тестовая рассылка 4 (user1)",
+        "date_first_mailing": "2024-05-31T00:00:00Z",
+        "frequency_mailing": "Y",
+        "date_next_mailing": "2026-05-31T00:00:00Z",
+        "state_mailing": "C",
+        "message": 1,
+        "is_active": true,
+        "owner": 3,
+        "clients": [
+            1,
+            3
+        ]
+    }
+},
+{
+    "model": "newsletters.newsletters",
+    "pk": 5,
+    "fields": {
+        "name_newsletter": "Рассылка менеджера",
+        "date_first_mailing": "2024-05-31T00:00:00Z",
+        "frequency_mailing": "W",
+        "date_next_mailing": "2024-05-31T00:00:00Z",
+        "state_mailing": "C",
+        "message": 4,
+        "is_active": true,
+        "owner": 2,
+        "clients": [
+            7
+        ]
+    }
+},
+{
+    "model": "newsletters.newsletters",
+    "pk": 6,
+    "fields": {
+        "name_newsletter": "Рабочая рассылка",
+        "date_first_mailing": "2024-05-31T00:00:00Z",
+        "frequency_mailing": "D",
+        "date_next_mailing": "2024-06-01T00:00:00Z",
+        "state_mailing": "C",
+        "message": 1,
+        "is_active": true,
+        "owner": 3,
+        "clients": [
+            8
+        ]
+    }
+}
+]

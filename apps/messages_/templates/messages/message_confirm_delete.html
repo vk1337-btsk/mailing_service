@@ -1,0 +1,49 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+{% load my_tags %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-xxl-3"></div>
+
+        <div class="col-xxl-6 text-center justify-content-center">
+
+            <form method="post" enctype="multipart/form-data" class="mb-4">
+                {% csrf_token %}
+                <p>Желаете удалить это сообщение?</p>
+                <button type="submit" class="btn btn-danger">Подтвердить</button>
+                <a href="{% url 'messages_:message' object.pk %}" class="btn btn-warning">Отмена</a>
+            </form>
+
+            <div class="row">
+                <div class="col-3">
+                    <div class="card">
+                        {% if object.img_letter %}
+                        <img src="{{ object.img_letter|media_url }}" class="img-fluid" alt="Responsive image">
+                        {% else %}
+                        <div class="card-body">
+                            Изображение отсутствует.
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="col-9">
+                    <div class="card">
+                        <div class="card-header text-center">
+                            <p class="fs-5">{{ object.subject_letter }}</p>
+                        </div>
+                        <div class="card-body">
+                            {{ object.text_letter }}
+                        </div>
+                    </div>
+                    <div class="col-xxl-4"></div>
+                </div>
+            </div>
+            <div class="col-xxl-3"></div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

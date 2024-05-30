@@ -1,0 +1,42 @@
+{% extends '../main/base.html' %}
+
+{% block content %}
+
+<div class="container">
+    {% if perms.blog.add_articles %}
+    <div class="text-right">
+        <button type="button" class="btn btn-outline-primary shadow-sm">
+            <a href="{% url 'blog:create_article' %}">Добавить новость</a>
+        </button>
+    </div>
+    {% endif %}
+    {% for article in object_list %}
+
+    <div class="card">
+        <div class="row g-0">
+            <div class="col-5 col-sm-4">
+                <img src="{{ article.img.url }}" class="img-fluid w-100" alt="card-horizontal-image">
+            </div>
+            <div class="col-7 col-sm-8">
+                <div class="card-body">
+                    <a href="{% url 'blog:article' article.slug %}" class="card-title">
+                        <h5>{{ article.title }}</h5>
+                    </a>
+                    <p class="card-text">{{ article.text|truncatewords:50 }}</p>
+                    <p class="card-text">
+                        <small class="text-muted">
+                            Автор: {{ article.author.first_name }} {{ article.author.last_name }} {{article.author.middle_name }}
+                        </small><br>
+                        <small class="text-muted">Просмотров: {{ article.views }}</small><br>
+                        <small class="text-muted">Создано: {{ article.created_at }}</small><br>
+                        <small class="text-muted">В редакции от: {{ article.created_at }}</small>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% endfor %}
+
+</div>
+{% endblock content %}

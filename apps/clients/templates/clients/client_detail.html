@@ -1,0 +1,41 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-xxl-2">
+            <div class="btn-group" role="group" aria-label="Basic outlined button group">
+                {% if perms.clients.change_clients and user == object.owner %}
+                <button type="button" class="btn btn-outline-primary shadow-sm">
+                    <a href="{% url 'clients:update_client' object.pk %}">Изменить</a>
+                </button>
+                {% endif %}
+                {% if perms.clients.delete_clients and user == object.owner %}
+                <button type="button" class="btn btn-outline-primary shadow-sm">
+                    <a href="{% url 'clients:delete_client' object.pk %}">Удалить</a>
+                </button>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="col-xxl-3">
+        </div>
+
+        <div class="col-xxl-7">
+            <div class="card">
+                <div class="card-header text-center">
+                    {{ object.first_name }} {{ object.last_name }} {{ object.middle_name }}
+                </div>
+                <div class="card-body">
+                    <ul>
+                        <li>Email: {{ object.email }}</li>
+                        <li>Комментарий: {{ object.comment }}</li>
+                        <li>День рождения: {{ object.birthday }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

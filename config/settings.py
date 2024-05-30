@@ -1,15 +1,17 @@
+import os
+import configparser
 from pathlib import Path
-from utils import get_data_from_config
+
+
+# Getting data from the config.ini file
+config = configparser.ConfigParser()
+config.read("config.ini")
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
+#  SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-05$voh&*v5ta)o(uluibdr5-(xlo%kkj1pzey5pe22hnbqm!_u'
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -19,7 +21,6 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -28,9 +29,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'main',
-    'blog',
-    'newsletter',
+    'apps.main',             # Main apps
+    'apps.blog',             # Apps with blog
+    'apps.newsletters',      # Apps with newsletters
+    'apps.users',            # Apps with users
+    'apps.clients',          # Apps with clients
+    'apps.messages_',        # Apps with messages
+
+    'django_apscheduler',  # Django apsheduler
+
 ]
 
 MIDDLEWARE = [
@@ -65,24 +72,19 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-
-params_db = get_data_from_config('database_postgres')
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': params_db['dbname'],                        # Название БД
-        'USER': params_db['user'],                          # Пользователь для подключения
-        'PASSWORD': params_db['password'],                  # Пароль для этого пользователя
-        'HOST': params_db['host'],                          # Адрес, на котором развернут сервер БД
-        'PORT': params_db['port'],                          # Порт, на котором работает сервер БД
+        'ENGINE': f'django.db.backends.{config['database']['engine']}',
+        'NAME': config['database']['dbname'],
+        'USER': config['database']['user'],
+        'PASSWORD': config['database']['password'],
+        'HOST': config['database']['host'],
+        'PORT': config['database']['port'],
     }
 }
 
 
 # Password validation
-# https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -100,23 +102,57 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 # Internationalization
-# https://docs.djangoproject.com/en/5.0/topics/i18n/
-
 LANGUAGE_CODE = 'ru'
-
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.0/howto/static-files/
-
 STATIC_URL = 'static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'apps', 'main', 'static'),
+]
+
+
+# Media files
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 
 # Default primary key field type
-# https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Users
+AUTH_USER_MODEL = 'users.Users'
+
+
+# Login / Logout / Registry
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+
+
+# Data email
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_PORT = 465
+EMAIL_USE_SSL = True
+
+EMAIL_HOST_USER = config['data_email_yandex']['email_host_user']
+EMAIL_HOST_PASSWORD = config['data_email_yandex']['email_host_password']
+
+# Logging
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+        },
+    },
+    "root": {
+        "handlers": ["console"],
+        "level": "DEBUG",
+    },
+}

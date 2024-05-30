@@ -1,0 +1,41 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<div class="container">
+    {% if perms.messages_.add_messages %}
+    <button type="button" class="btn btn-outline-primary shadow-sm">
+        <a href="{% url 'messages_:create_message' %}" style="color: black; text-decoration: none;">Создать
+            сообщение</a>
+    </button>
+    {% endif %}
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            {% if perms.messages_.view_all_messages %}
+            <th scope="col">Пользователь (email)</th>
+            <th scope="col">Пользователь (user name)</th>
+            {% endif %}
+            <th scope="col">Тема письма</th>
+            <th scope="col">Текст письма</th>
+        </tr>
+        </thead>
+        {% for message in object_list %}
+        <tbody>
+        <tr>
+            <th scope="row">{{ forloop.counter }}</th>
+            {% if perms.messages_.view_all_messages %}
+            <td><a>{{ message.owner.email }}</a></td>
+            <td><a>{{ message.owner.user_name }}</a></td>
+            {% endif %}
+            <td><a href="{% url 'messages_:message' message.pk %}">{{ message.subject_letter }}</a></td>
+            <td><a href="{% url 'messages_:message' message.pk %}">{{ message.text_letter }}</a></td>
+        </tr>
+
+        </tbody>
+        {% endfor %}
+    </table>
+</div>
+
+{% endblock content %}

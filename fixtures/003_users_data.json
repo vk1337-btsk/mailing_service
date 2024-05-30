@@ -1,0 +1,106 @@
+[
+  {
+    "model": "users.users",
+    "fields": {
+      "password": "Qwerty123!",
+      "last_login": "2024-05-29T12:36:48.155Z",
+      "is_superuser": false,
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-05-25T13:41:34Z",
+      "email": "content_manager@test.com",
+      "user_name": "content_manager",
+      "first_name": "Кирилл",
+      "last_name": "Константинович",
+      "middle_name": "Колосов",
+      "country": null,
+      "city": null,
+      "phone": null,
+      "birthday": "2024-05-25",
+      "avatar": "users/avatar/avatar_default.png",
+      "token": null,
+      "groups": [
+        1
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.users",
+    "fields": {
+      "password": "Qwerty123!",
+      "last_login": "2024-05-29T12:49:18.686Z",
+      "is_superuser": false,
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-05-25T13:41:34Z",
+      "email": "manager@test.com",
+      "user_name": "manager",
+      "first_name": "Сергей",
+      "last_name": "Степанович",
+      "middle_name": "Серов",
+      "country": null,
+      "city": null,
+      "phone": null,
+      "birthday": "2024-05-25",
+      "avatar": "users/avatar/avatar_default.png",
+      "token": null,
+      "groups": [
+        3
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.users",
+    "fields": {
+      "password": "Qwerty123!",
+      "last_login": "2024-05-29T12:29:36.777Z",
+      "is_superuser": false,
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-05-25T13:41:34Z",
+      "email": "user1@test.com",
+      "user_name": "user",
+      "first_name": "Василий",
+      "last_name": "Вадимович",
+      "middle_name": "Выхин",
+      "country": null,
+      "city": null,
+      "phone": null,
+      "birthday": "2024-05-25",
+      "avatar": "users/avatar/avatar_default.png",
+      "token": null,
+      "groups": [
+        2
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.users",
+    "fields": {
+      "password": "Qwerty123!",
+      "last_login": "2024-05-29T12:29:36.777Z",
+      "is_superuser": false,
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-05-25T13:41:34Z",
+      "email": "user2@test.com",
+      "user_name": "user",
+      "first_name": "Илья",
+      "last_name": "Ильич",
+      "middle_name": "Млюхин",
+      "country": null,
+      "city": null,
+      "phone": null,
+      "birthday": "2024-05-25",
+      "avatar": "users/avatar/avatar_default.png",
+      "token": null,
+      "groups": [
+        2
+      ],
+      "user_permissions": []
+    }
+  }
+]

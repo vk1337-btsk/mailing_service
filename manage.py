@@ -2,7 +2,7 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
-
+# from apps.newsletters.management.commands.runapscheduler import Command as RunApSchedulerCommand
 
 def main():
     """Run administrative tasks."""
@@ -20,3 +20,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+    # RunApSchedulerCommand.handle()

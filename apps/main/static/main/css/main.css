@@ -1,0 +1,15 @@
+.leftimg {
+    float: left; /* Выравнивание по левому краю */
+    margin: 7px 7px 7px 0; /* Отступы вокруг картинки */
+}
+
+.rightimg {
+    float: right; /* Выравнивание по правому краю  */
+    margin: 7px 0 7px 7px; /* Отступы вокруг картинки */
+}
+
+body {
+    background-image: url('../img/background-image.jpg'); /* Прописываем url картинки */
+    background-size: cover; /* Растянуть изображение на всю область */
+    background-attachment: fixed;
+}

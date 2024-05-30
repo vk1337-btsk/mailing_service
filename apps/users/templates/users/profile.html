@@ -1,0 +1,41 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-3 col-lg-2">
+        <div class="list-group" id="list-tab" role="tablist">
+            <a class="list-group-item list-group-item-action active" id="list-profile-list" data-bs-toggle="list"
+               href="#list-profile" role="tab" aria-controls="home">Мой профиль</a>
+            <a class="list-group-item list-group-item-action" id="list-statics-list" data-bs-toggle="list"
+               href="#list-statistics" role="tab" aria-controls="profile">Моя статистика</a>
+            {% if perms.users.view_all_users %}
+            <a class="list-group-item list-group-item-action " id="list-users-list" data-bs-toggle="list"
+               href="#list-users" role="tab" aria-controls="messages">Пользователи сервиса</a>
+            {% endif %}
+        </div>
+        <div class="mt-3 text-center">
+            {% if perms.users.change_users and user == user %}
+            <button type="button" class="btn btn-outline-primary shadow-sm form-control">
+                <a href="{% url 'users:update_profile' user.pk %}">Изменить</a>
+            </button>
+            {% endif %}
+        </div>
+    </div>
+    <div class="col-9 col-lg-10">
+        <div class="tab-content" id="list-nav-tabContent">
+            <div class="tab-pane fade show active" id="list-profile" role="tabpanel"
+                 aria-labelledby="list-profile-list">
+                {% include 'users/subtemplates/profile_info.html' %}
+            </div>
+            <div class="tab-pane fade" id="list-statistics" role="tabpanel" aria-labelledby="list-statics-list">
+                {% include 'users/subtemplates/statistics_info.html' %}
+            </div>
+            {% if perms.users.view_all_users %}
+            <div class="tab-pane fade" id="list-users" role="tabpanel" aria-labelledby="list-users-list">
+                {% include 'users/subtemplates/list_users.html' %}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock content %}

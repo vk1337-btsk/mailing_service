@@ -1,0 +1,24 @@
+[database]
+engine=your_name_engine_db
+dbname=your_name_db_or_mailling_service
+host=your_host_or_localhost
+user=your_name_user_or_postgres
+password=your_password
+port=your_port_or_5432
+
+[data_admin]
+ADMIN_EMAIL=admin@mail.ru
+ADMIN_PASSWORD=qwerty123
+ADMIN_USER_NAME=admin
+ADMIN_FIRST_NAME=Admin
+ADMIN_LAST_NAME=Adminov
+ADMIN_MIDDLE_NAME=Adminovich
+
+[data_email_yandex]
+email_host_user = your_email_host_user
+email_host_password = your_email_host_password
+
+[settings_django]
+DEBUG = True
+CACHE_ENABLED = True
+LOCATION = redis://host:port

@@ -1,0 +1,91 @@
+{% load my_tags %}
+
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Статус пользователя</th>
+        <th scope="col">email</th>
+        <th scope="col">ФИО</th>
+        <th scope="col">Страна</th>
+        <th scope="col">Город</th>
+        <th scope="col">Телефон</th>
+        <th scope="col">День рождения</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for user in list_users %}
+    <tr class="table-light">
+        <th scope="row">{{ forloop.counter }}</th>
+        <td>
+            {% if perms.users.set_user_deactivate and not user.is_superuser%}
+            <button type="submit" class="btn btn-outline-primary shadow-sm">
+                <a href="{% url 'users:toggle_activiti' user.pk %}">
+                    {% if user.is_active %} Деактивировать {% else %} Активировать {% endif %}
+                </a>
+            </button>
+            {% else %}
+            Деактивация невозможна
+            {% endif %}
+        </td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.first_name }} {{ user.last_name|first_letter }}. {{ user.middle_name|first_letter }}.</td>
+        <td>{{ user.country }}</td>
+        <td>{{ user.city }}</td>
+        <td>{{ user.phone }}</td>
+        <td>{{ user.birthday }}</td>
+    </tr>
+    {% empty %}
+    {% endfor %}
+    </tbody>
+</table>
+
+
+<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+
+    <table class="table caption-top">
+        <caption>List of users</caption>
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">email</th>
+            <th scope="col">Никнейм</th>
+            <th scope="col">Имя Фамилия Отчество</th>
+            <th scope="col">Страна</th>
+            <th scope="col">Город</th>
+            <th scope="col">Телефон</th>
+            <th scope="col">День рождения</th>
+            <th scope="col">Актив</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for user in list_users %}
+        <tr>
+            <th scope="row">{{ forloop.counter }}</th>
+            <td>{{ user.email }}</td>
+            <td>{{ user.user_name }}</td>
+            <td>{{ user.first_name }} {{ user.last_name }} {{ user.middle_name }}</td>
+            <td>{{ user.country }}</td>
+            <td>{{ user.city }}</td>
+            <td>{{ user.phone }}</td>
+            <td>{{ user.birthday }}</td>
+            <td>
+                {% if perms.users.set_user_deactivate or user.is_superuser %}
+                {% if object.is_active %}
+                <a href="{% url 'users:toggle_activiti' user.pk %}" class="btn btn-sm btn-outline-danger">
+                    Деактивировать
+                </a>
+                {% else %}
+                <a href="{% url 'users:toggle_activiti' user.pk %}"
+                   class="btn btn-sm btn-outline-success">
+                    Активировать
+                </a>
+                {% endif %}
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+</div>

@@ -3,7 +3,7 @@
     "model": "users.users",
     "pk": 1,
     "fields": {
-        "password": "pbkdf2_sha256$720000$xnFU2lF4cm4NNBue20h6Kq$5iwiZjbkIl5cexAlORkEwKjFQj6/0BawIud6A2C+b2Y=",
+        "password": "Qwerty123!",
         "last_login": "2024-05-31T00:59:47.854Z",
         "is_superuser": false,
         "is_staff": false,
@@ -30,7 +30,7 @@
     "model": "users.users",
     "pk": 2,
     "fields": {
-        "password": "pbkdf2_sha256$720000$pt3MZoMWwxJan1AU4bjg2j$fo4YqJlIj6j8a6PeTVvKliQVDyIxrQ4ktzpqAfFexXA=",
+        "password": "Qwerty123!",
         "last_login": "2024-05-31T01:08:27.303Z",
         "is_superuser": false,
         "is_staff": false,
@@ -57,7 +57,7 @@
     "model": "users.users",
     "pk": 3,
     "fields": {
-        "password": "pbkdf2_sha256$720000$6ssjq9U4lX39Ddeo1cz37d$SkINzQC5eL0l5RA+Um4vtjMv56uT/OI2j8qUMiy6FEM=",
+        "password": "Qwerty123!",
         "last_login": "2024-05-31T00:58:22.935Z",
         "is_superuser": false,
         "is_staff": false,
@@ -84,7 +84,7 @@
     "model": "users.users",
     "pk": 4,
     "fields": {
-        "password": "pbkdf2_sha256$720000$guGUFbBKiE0kpZzav9fbQE$TYxcoG5pUqvS5ci+9xnDJaVRymF/gi48oaPF8RyYQE8=",
+        "password": "Qwerty123!",
         "last_login": "2024-05-31T02:30:46.981Z",
         "is_superuser": false,
         "is_staff": false,

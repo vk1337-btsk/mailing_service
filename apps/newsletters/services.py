@@ -13,17 +13,19 @@ def start_mailing():
     Функция осуществляющая рассылку сообщений по электронным почтам клиентов
     """
     now = datetime.now(timezone.utc)
-    logger.info(now)
-    # mailing_list = Newsletters.objects.filter(date_next_mailing=now, state_mailing=[Newsletters.StateOfMailing.CREATED,
-    #                                                                                 Newsletters.StateOfMailing.LAUNCHED])
+    # mailing_list = Newsletters.objects.filter(date_next_mailing=now,
+    #                                           state_mailing=[Newsletters.StateOfMailing.CREATED,
+    #                                                          Newsletters.StateOfMailing.LAUNCHED],
+    #                                           is_active=True)
     mailing_list = Newsletters.objects.all()
-    logger.info(mailing_list)
-    for mailing in mailing_list:
-        subject_letter = mailing.message.subject_letter
-        text_letter = mailing.message.text_letter
-        clients_list = mailing.clients.all()
-        answer_server = None
-        status = None
+    for newsletter in mailing_list:
+        subject_letter = newsletter.message.subject_letter
+        text_letter = newsletter.message.text_letter
+        clients_list = newsletter.clients.all()
+
+        count_clients = len(clients_list)
+        count_sent = 0
+
         for client in clients_list:
             data_send = datetime.now(timezone.utc)
             try:
@@ -34,38 +36,53 @@ def start_mailing():
                     recipient_list=[client.email],
                     fail_silently=False
                 )
-                status = Logs.StatusOfLogs.SUCCESS
+                count_sent += answer_server
             except smtplib.SMTPResponseException as error:
-                answer_server = str(error)
-                status = Logs.StatusOfLogs.FAILED
+                # answer_server = str(error)
+                pass
 
-            finally:
-                add_log_mailings(mailing, data_send, status, answer_server)
-        change_mailing_status(mailing)
+        mailing_report = create_report(newsletter, now, count_clients, count_sent)
+        change_next_mailing_date_and_status(newsletter)
+        status = change_status_logs(count_clients, count_clients)
+        add_log_mailings(newsletter, data_send, status, mailing_report)
 
 
-def add_log_mailings(mailing, data_send, status, answer_server):
+def change_status_logs(count_clients, count_sent):
+    if count_clients == count_sent:
+        return Logs.StatusOfLogs.SUCCESS
+    elif count_sent == 0:
+        return Logs.StatusOfLogs.FAILED
+    else:
+        return Logs.StatusOfLogs.PARTIALLY
+
+
+def add_log_mailings(newsletter, date_last_mailing, status, mailing_report):
     Logs.objects.create(
-        mailing=mailing,
-        datatime=data_send,
-        status=status,
-        answer_mail_server=answer_server,
+        newsletter=newsletter,
+        date_last_mailing=date_last_mailing,
+        status_mailing=status,
+        response_mail_server=mailing_report,
     )
 
 
-def change_mailing_status(mailing):
-    dict_periodicity = {
-        'Ежедневно': 1,
-        'Еженедельно': 7,
-        'Ежемесячно': 30,
-        'Ежегодно': 365
-    }
-    periodicity = dict_periodicity[mailing.periodicity]
-    mailing_last = mailing.sent_time + timedelta(days=periodicity)
-    if mailing_last > mailing.data_mailing_finish:
-        mailing.status = mailing.StatusOfMailing.FINISHED
+def change_next_mailing_date_and_status(newsletter):
+    periodicity = newsletter.frequency_mailing
+    if periodicity == 'D':
+        newsletter.date_next_mailing += timedelta(days=1)
+    elif periodicity == 'W':
+        newsletter.date_next_mailing += timedelta(days=7)
+    elif periodicity == 'M':
+        newsletter.date_next_mailing += timedelta(days=30)
     else:
-        mailing.sent_time = mailing_last
-        mailing.status = mailing.StatusOfMailing.LAUNCHED
+        newsletter.date_next_mailing += timedelta(days=365)
 
-    mailing.save()
+    if newsletter.state_mailing == Newsletters.StateOfMailing.CREATED:
+        newsletter.state_mailing = Newsletters.StateOfMailing.LAUNCHED
+
+    newsletter.save()
+
+
+def create_report(newsletter, now, count_clients, count_sent) -> str:
+    report = (f'Рассылка "{newsletter.name_newsletter}" от {now.strftime('%d.%m.%Y %H:%M')} осуществлена. '
+              f'Рассылка осуществлена {count_sent} клиентам из {count_clients}.')
+    return report

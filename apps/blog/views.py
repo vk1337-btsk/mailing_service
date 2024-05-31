@@ -6,11 +6,16 @@ from apps.blog.forms import ArticleForm
 from apps.blog.models import Articles
 from django.urls import reverse, reverse_lazy
 
+from apps.blog.utils import get_article_list_from_cache
+
 
 class ArticlesListView(ListView):
     model = Articles
     template_name = 'blog/articles_list.html'
     extra_context = {'title': 'Новости'}
+
+    def get_queryset(self):
+        return get_article_list_from_cache()
 
 
 class ArticlesDetailView(DetailView):

@@ -91,6 +91,7 @@ pip install -r requirements.txt
     email_host_password = Qwerty123!  - пароль регистрации администратора сайта
   
     [settings_django]
+    SECRET_KEY = secret - секретный ключ django проекта
     DEBUG=True - режим DEBUG
     CACHE_ENABLED=True - использование кэша
     LOCATION=redis://host:port - данные местоположения redis
@@ -113,12 +114,12 @@ pip install -r requirements.txt
 - Если вы хотите чистый сайт без данных и пользователей тогда применять фикстуру ниже не надо, 
 для создания суперюзера введите команду: 
   ```text
-  python manage.py csu
+  python manage.py create_su
   ```
  
 - Если вы хотите использовать данные из фикстур этого проекта создавать суперюзера не надо введите команду:
   ```text
-  python manage.py loaddata fixtures/*.json
+  python manage.py fill_db --table all
   ```
 
 - Установите Redis:

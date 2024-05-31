@@ -183,342 +183,342 @@
     "model": "auth.permission",
     "pk": 21,
     "fields": {
-        "name": "Can add django job",
+        "name": "Can add Статья",
         "content_type": 6,
-        "codename": "add_djangojob"
+        "codename": "add_articles"
     }
 },
 {
     "model": "auth.permission",
     "pk": 22,
     "fields": {
-        "name": "Can change django job",
+        "name": "Can change Статья",
         "content_type": 6,
-        "codename": "change_djangojob"
+        "codename": "change_articles"
     }
 },
 {
     "model": "auth.permission",
     "pk": 23,
     "fields": {
-        "name": "Can delete django job",
+        "name": "Can delete Статья",
         "content_type": 6,
-        "codename": "delete_djangojob"
+        "codename": "delete_articles"
     }
 },
 {
     "model": "auth.permission",
     "pk": 24,
     "fields": {
-        "name": "Can view django job",
+        "name": "Can view Статья",
         "content_type": 6,
-        "codename": "view_djangojob"
+        "codename": "view_articles"
     }
 },
 {
     "model": "auth.permission",
     "pk": 25,
     "fields": {
-        "name": "Can add django job execution",
+        "name": "Can add Попытка рассылки",
         "content_type": 7,
-        "codename": "add_djangojobexecution"
+        "codename": "add_logs"
     }
 },
 {
     "model": "auth.permission",
     "pk": 26,
     "fields": {
-        "name": "Can change django job execution",
+        "name": "Can change Попытка рассылки",
         "content_type": 7,
-        "codename": "change_djangojobexecution"
+        "codename": "change_logs"
     }
 },
 {
     "model": "auth.permission",
     "pk": 27,
     "fields": {
-        "name": "Can delete django job execution",
+        "name": "Can delete Попытка рассылки",
         "content_type": 7,
-        "codename": "delete_djangojobexecution"
+        "codename": "delete_logs"
     }
 },
 {
     "model": "auth.permission",
     "pk": 28,
     "fields": {
-        "name": "Can view django job execution",
+        "name": "Can view Попытка рассылки",
         "content_type": 7,
-        "codename": "view_djangojobexecution"
+        "codename": "view_logs"
     }
 },
 {
     "model": "auth.permission",
     "pk": 29,
     "fields": {
-        "name": "Can add Статья",
+        "name": "Can add Рассылка",
         "content_type": 8,
-        "codename": "add_articles"
+        "codename": "add_newsletters"
     }
 },
 {
     "model": "auth.permission",
     "pk": 30,
     "fields": {
-        "name": "Can change Статья",
+        "name": "Can change Рассылка",
         "content_type": 8,
-        "codename": "change_articles"
+        "codename": "change_newsletters"
     }
 },
 {
     "model": "auth.permission",
     "pk": 31,
     "fields": {
-        "name": "Can delete Статья",
+        "name": "Can delete Рассылка",
         "content_type": 8,
-        "codename": "delete_articles"
+        "codename": "delete_newsletters"
     }
 },
 {
     "model": "auth.permission",
     "pk": 32,
     "fields": {
-        "name": "Can view Статья",
+        "name": "Can view Рассылка",
         "content_type": 8,
-        "codename": "view_articles"
+        "codename": "view_newsletters"
     }
 },
 {
     "model": "auth.permission",
     "pk": 33,
     "fields": {
-        "name": "Can add Попытка рассылки",
-        "content_type": 9,
-        "codename": "add_logs"
+        "name": "Can deacticate Рассылка",
+        "content_type": 8,
+        "codename": "set_newsletters_deactivate"
     }
 },
 {
     "model": "auth.permission",
     "pk": 34,
     "fields": {
-        "name": "Can change Попытка рассылки",
-        "content_type": 9,
-        "codename": "change_logs"
+        "name": "Can view all Рассылка",
+        "content_type": 8,
+        "codename": "view_all_newsletters"
     }
 },
 {
     "model": "auth.permission",
     "pk": 35,
     "fields": {
-        "name": "Can delete Попытка рассылки",
+        "name": "Can add Пользователь",
         "content_type": 9,
-        "codename": "delete_logs"
+        "codename": "add_users"
     }
 },
 {
     "model": "auth.permission",
     "pk": 36,
     "fields": {
-        "name": "Can view Попытка рассылки",
+        "name": "Can change Пользователь",
         "content_type": 9,
-        "codename": "view_logs"
+        "codename": "change_users"
     }
 },
 {
     "model": "auth.permission",
     "pk": 37,
     "fields": {
-        "name": "Can add Рассылка",
-        "content_type": 10,
-        "codename": "add_newsletters"
+        "name": "Can delete Пользователь",
+        "content_type": 9,
+        "codename": "delete_users"
     }
 },
 {
     "model": "auth.permission",
     "pk": 38,
     "fields": {
-        "name": "Can change Рассылка",
-        "content_type": 10,
-        "codename": "change_newsletters"
+        "name": "Can view Пользователь",
+        "content_type": 9,
+        "codename": "view_users"
     }
 },
 {
     "model": "auth.permission",
     "pk": 39,
     "fields": {
-        "name": "Can delete Рассылка",
-        "content_type": 10,
-        "codename": "delete_newsletters"
+        "name": "Can deacticate Пользователь",
+        "content_type": 9,
+        "codename": "set_user_deactivate"
     }
 },
 {
     "model": "auth.permission",
     "pk": 40,
     "fields": {
-        "name": "Can view Рассылка",
-        "content_type": 10,
-        "codename": "view_newsletters"
+        "name": "Can view all Пользователь",
+        "content_type": 9,
+        "codename": "view_all_users"
     }
 },
 {
     "model": "auth.permission",
     "pk": 41,
     "fields": {
-        "name": "Can add Пользователь",
-        "content_type": 11,
-        "codename": "add_users"
+        "name": "Can add Клиент",
+        "content_type": 10,
+        "codename": "add_clients"
     }
 },
 {
     "model": "auth.permission",
     "pk": 42,
     "fields": {
-        "name": "Can change Пользователь",
-        "content_type": 11,
-        "codename": "change_users"
+        "name": "Can change Клиент",
+        "content_type": 10,
+        "codename": "change_clients"
     }
 },
 {
     "model": "auth.permission",
     "pk": 43,
     "fields": {
-        "name": "Can delete Пользователь",
-        "content_type": 11,
-        "codename": "delete_users"
+        "name": "Can delete Клиент",
+        "content_type": 10,
+        "codename": "delete_clients"
     }
 },
 {
     "model": "auth.permission",
     "pk": 44,
     "fields": {
-        "name": "Can view Пользователь",
-        "content_type": 11,
-        "codename": "view_users"
+        "name": "Can view Клиент",
+        "content_type": 10,
+        "codename": "view_clients"
     }
 },
 {
     "model": "auth.permission",
     "pk": 45,
     "fields": {
-        "name": "Can user deactivate",
-        "content_type": 11,
-        "codename": "set_user_deactivate"
+        "name": "Can view all Клиент",
+        "content_type": 10,
+        "codename": "view_all_clients"
     }
 },
 {
     "model": "auth.permission",
     "pk": 46,
     "fields": {
-        "name": "Can view all users",
+        "name": "Can add Письмо",
         "content_type": 11,
-        "codename": "view_all_users"
+        "codename": "add_messages"
     }
 },
 {
     "model": "auth.permission",
     "pk": 47,
     "fields": {
-        "name": "Can add Клиент",
-        "content_type": 12,
-        "codename": "add_clients"
+        "name": "Can change Письмо",
+        "content_type": 11,
+        "codename": "change_messages"
     }
 },
 {
     "model": "auth.permission",
     "pk": 48,
     "fields": {
-        "name": "Can change Клиент",
-        "content_type": 12,
-        "codename": "change_clients"
+        "name": "Can delete Письмо",
+        "content_type": 11,
+        "codename": "delete_messages"
     }
 },
 {
     "model": "auth.permission",
     "pk": 49,
     "fields": {
-        "name": "Can delete Клиент",
-        "content_type": 12,
-        "codename": "delete_clients"
+        "name": "Can view Письмо",
+        "content_type": 11,
+        "codename": "view_messages"
     }
 },
 {
     "model": "auth.permission",
     "pk": 50,
     "fields": {
-        "name": "Can view Клиент",
-        "content_type": 12,
-        "codename": "view_clients"
+        "name": "Can view all Письмо",
+        "content_type": 11,
+        "codename": "view_all_messages"
     }
 },
 {
     "model": "auth.permission",
     "pk": 51,
     "fields": {
-        "name": "Can add Письмо",
-        "content_type": 13,
-        "codename": "add_messages"
+        "name": "Can add django job",
+        "content_type": 12,
+        "codename": "add_djangojob"
     }
 },
 {
     "model": "auth.permission",
     "pk": 52,
     "fields": {
-        "name": "Can change Письмо",
-        "content_type": 13,
-        "codename": "change_messages"
+        "name": "Can change django job",
+        "content_type": 12,
+        "codename": "change_djangojob"
     }
 },
 {
     "model": "auth.permission",
     "pk": 53,
     "fields": {
-        "name": "Can delete Письмо",
-        "content_type": 13,
-        "codename": "delete_messages"
+        "name": "Can delete django job",
+        "content_type": 12,
+        "codename": "delete_djangojob"
     }
 },
 {
     "model": "auth.permission",
     "pk": 54,
     "fields": {
-        "name": "Can view Письмо",
-        "content_type": 13,
-        "codename": "view_messages"
+        "name": "Can view django job",
+        "content_type": 12,
+        "codename": "view_djangojob"
     }
 },
 {
     "model": "auth.permission",
     "pk": 55,
     "fields": {
-        "name": "Can deacticate Рассылка",
-        "content_type": 10,
-        "codename": "set_newsletters_deactivate"
+        "name": "Can add django job execution",
+        "content_type": 13,
+        "codename": "add_djangojobexecution"
     }
 },
 {
     "model": "auth.permission",
     "pk": 56,
     "fields": {
-        "name": "Can view all Рассылка",
-        "content_type": 10,
-        "codename": "view_all_newsletters"
+        "name": "Can change django job execution",
+        "content_type": 13,
+        "codename": "change_djangojobexecution"
     }
 },
 {
     "model": "auth.permission",
     "pk": 57,
     "fields": {
-        "name": "Can view all Клиент",
-        "content_type": 12,
-        "codename": "view_all_clients"
+        "name": "Can delete django job execution",
+        "content_type": 13,
+        "codename": "delete_djangojobexecution"
     }
 },
 {
     "model": "auth.permission",
     "pk": 58,
     "fields": {
-        "name": "Can view all Письмо",
+        "name": "Can view django job execution",
         "content_type": 13,
-        "codename": "view_all_messages"
+        "codename": "view_djangojobexecution"
     }
 }
 ]

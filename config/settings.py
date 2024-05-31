@@ -12,10 +12,10 @@ config.read("config.ini")
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 #  SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-05$voh&*v5ta)o(uluibdr5-(xlo%kkj1pzey5pe22hnbqm!_u'
+SECRET_KEY = fr'{config['settings_django']['SECRET_KEY']}'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config['settings_django']['DEBUG'] == 'True'
 
 ALLOWED_HOSTS = []
 
@@ -156,3 +156,13 @@ LOGGING = {
         "level": "DEBUG",
     },
 }
+
+# Caches
+CACHE_ENABLED = config['settings_django']['CACHE_ENABLED'] == 'True'
+if CACHE_ENABLED:
+    CACHES = {
+        "default": {
+            "BACKEND": "django.core.cache.backends.redis.RedisCache",
+            "LOCATION": config['settings_django']['LOCATION'],
+        }
+    }

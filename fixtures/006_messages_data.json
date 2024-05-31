@@ -3,40 +3,30 @@
     "model": "messages_.messages",
     "pk": 1,
     "fields": {
-        "subject_letter": "Письмо user1 №1",
-        "text_letter": "Текст письма",
+        "subject_letter": "Тестовая рассылка менеджера",
+        "text_letter": "Текст",
         "img_letter": "",
-        "owner": 3
+        "owner": 2
     }
 },
 {
     "model": "messages_.messages",
     "pk": 2,
     "fields": {
-        "subject_letter": "Письмо user1 №1",
-        "text_letter": "Текст письма",
-        "img_letter": "",
-        "owner": 3
-    }
-},
-{
-    "model": "messages_.messages",
-    "pk": 3,
-    "fields": {
-        "subject_letter": "Письмо user2 №1",
-        "text_letter": "Текст",
+        "subject_letter": "Тема письма user2",
+        "text_letter": "Просто текст",
         "img_letter": "",
         "owner": 4
     }
 },
 {
     "model": "messages_.messages",
-    "pk": 4,
+    "pk": 3,
     "fields": {
-        "subject_letter": "Тест письма",
-        "text_letter": "Текст",
+        "subject_letter": "Письмо user1",
+        "text_letter": "Просто текст письма",
         "img_letter": "",
-        "owner": 5
+        "owner": 3
     }
 }
 ]

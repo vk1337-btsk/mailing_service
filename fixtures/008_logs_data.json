@@ -1,52 +1,122 @@
 [
 {
     "model": "newsletters.logs",
-    "pk": 1,
-    "fields": {
-        "newsletter": 5,
-        "date_last_mailing": "2024-05-30T22:46:00.103Z",
-        "status_mailing": "Безуспешно",
-        "response_mail_server": "Рассылка Рассылка менеджера от 2024-05-30 22:46:00.103236+00:00 выполнена. Рассылка осуществлена 0 клиентам из 1"
-    }
-},
-{
-    "model": "newsletters.logs",
-    "pk": 2,
-    "fields": {
-        "newsletter": 1,
-        "date_last_mailing": "2024-05-30T22:46:06.533Z",
-        "status_mailing": "Безуспешно",
-        "response_mail_server": "Рассылка Тестовая расссылка 1 (user1) от 2024-05-30 22:46:06.533575+00:00 выполнена. Рассылка осуществлена 0 клиентам из 3"
-    }
-},
-{
-    "model": "newsletters.logs",
-    "pk": 3,
-    "fields": {
-        "newsletter": 2,
-        "date_last_mailing": "2024-05-30T22:46:08.288Z",
-        "status_mailing": "Безуспешно",
-        "response_mail_server": "Рассылка Тестовая рассылка 2 (user1) от 2024-05-30 22:46:08.288391+00:00 выполнена. Рассылка осуществлена 0 клиентам из 1"
-    }
-},
-{
-    "model": "newsletters.logs",
-    "pk": 4,
+    "pk": 117,
     "fields": {
         "newsletter": 3,
-        "date_last_mailing": "2024-05-30T22:46:11.801Z",
-        "status_mailing": "Безуспешно",
-        "response_mail_server": "Рассылка Тестовая рассылка 3 (user1) от 2024-05-30 22:46:11.801662+00:00 выполнена. Рассылка осуществлена 0 клиентам из 2"
+        "date_last_mailing": "2024-05-31T02:20:14.242Z",
+        "status_mailing": "Успешно",
+        "response_mail_server": "Рассылка \"Нерабочая рассылка\" от 31.05.2024 02:20 осуществлена. Рассылка осуществлена 0 клиентам из 3."
     }
 },
 {
     "model": "newsletters.logs",
-    "pk": 5,
+    "pk": 118,
     "fields": {
         "newsletter": 4,
-        "date_last_mailing": "2024-05-30T22:46:15.348Z",
-        "status_mailing": "Безуспешно",
-        "response_mail_server": "Рассылка Тестовая рассылка 4 (user1) от 2024-05-30 22:46:15.348424+00:00 выполнена. Рассылка осуществлена 0 клиентам из 2"
+        "date_last_mailing": "2024-05-31T02:20:20.892Z",
+        "status_mailing": "Успешно",
+        "response_mail_server": "Рассылка \"Тестовая расссылка\" от 31.05.2024 02:20 осуществлена. Рассылка осуществлена 0 клиентам из 4."
+    }
+},
+{
+    "model": "newsletters.logs",
+    "pk": 119,
+    "fields": {
+        "newsletter": 2,
+        "date_last_mailing": "2024-05-31T02:20:22.413Z",
+        "status_mailing": "Успешно",
+        "response_mail_server": "Рассылка \"Тестовая рассылка user2\" от 31.05.2024 02:20 осуществлена. Рассылка осуществлена 0 клиентам из 1."
+    }
+},
+{
+    "model": "newsletters.logs",
+    "pk": 120,
+    "fields": {
+        "newsletter": 1,
+        "date_last_mailing": "2024-05-31T02:20:24.032Z",
+        "status_mailing": "Успешно",
+        "response_mail_server": "Рассылка \"Тестовая рассылка менеджера\" от 31.05.2024 02:20 осуществлена. Рассылка осуществлена 0 клиентам из 1."
+    }
+},
+{
+    "model": "newsletters.logs",
+    "pk": 121,
+    "fields": {
+        "newsletter": 3,
+        "date_last_mailing": "2024-05-31T02:20:33.412Z",
+        "status_mailing": "Успешно",
+        "response_mail_server": "Рассылка \"Нерабочая рассылка\" от 31.05.2024 02:20 осуществлена. Рассылка осуществлена 0 клиентам из 3."
+    }
+},
+{
+    "model": "newsletters.logs",
+    "pk": 122,
+    "fields": {
+        "newsletter": 4,
+        "date_last_mailing": "2024-05-31T02:20:39.971Z",
+        "status_mailing": "Успешно",
+        "response_mail_server": "Рассылка \"Тестовая расссылка\" от 31.05.2024 02:20 осуществлена. Рассылка осуществлена 0 клиентам из 4."
+    }
+},
+{
+    "model": "newsletters.logs",
+    "pk": 123,
+    "fields": {
+        "newsletter": 2,
+        "date_last_mailing": "2024-05-31T02:20:41.530Z",
+        "status_mailing": "Успешно",
+        "response_mail_server": "Рассылка \"Тестовая рассылка user2\" от 31.05.2024 02:20 осуществлена. Рассылка осуществлена 0 клиентам из 1."
+    }
+},
+{
+    "model": "newsletters.logs",
+    "pk": 124,
+    "fields": {
+        "newsletter": 1,
+        "date_last_mailing": "2024-05-31T02:20:43.170Z",
+        "status_mailing": "Успешно",
+        "response_mail_server": "Рассылка \"Тестовая рассылка менеджера\" от 31.05.2024 02:20 осуществлена. Рассылка осуществлена 0 клиентам из 1."
+    }
+},
+{
+    "model": "newsletters.logs",
+    "pk": 125,
+    "fields": {
+        "newsletter": 3,
+        "date_last_mailing": "2024-05-31T02:20:53.394Z",
+        "status_mailing": "Успешно",
+        "response_mail_server": "Рассылка \"Нерабочая рассылка\" от 31.05.2024 02:20 осуществлена. Рассылка осуществлена 0 клиентам из 3."
+    }
+},
+{
+    "model": "newsletters.logs",
+    "pk": 126,
+    "fields": {
+        "newsletter": 4,
+        "date_last_mailing": "2024-05-31T02:21:00.106Z",
+        "status_mailing": "Успешно",
+        "response_mail_server": "Рассылка \"Тестовая расссылка\" от 31.05.2024 02:20 осуществлена. Рассылка осуществлена 0 клиентам из 4."
+    }
+},
+{
+    "model": "newsletters.logs",
+    "pk": 127,
+    "fields": {
+        "newsletter": 2,
+        "date_last_mailing": "2024-05-31T02:21:01.867Z",
+        "status_mailing": "Успешно",
+        "response_mail_server": "Рассылка \"Тестовая рассылка user2\" от 31.05.2024 02:20 осуществлена. Рассылка осуществлена 0 клиентам из 1."
+    }
+},
+{
+    "model": "newsletters.logs",
+    "pk": 128,
+    "fields": {
+        "newsletter": 1,
+        "date_last_mailing": "2024-05-31T02:21:03.454Z",
+        "status_mailing": "Успешно",
+        "response_mail_server": "Рассылка \"Тестовая рассылка менеджера\" от 31.05.2024 02:20 осуществлена. Рассылка осуществлена 0 клиентам из 1."
     }
 }
 ]

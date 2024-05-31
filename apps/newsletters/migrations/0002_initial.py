@@ -10,14 +10,19 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('messages_', '0001_initial'),
+        ('newsletters', '0001_initial'),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='messages',
+            model_name='newsletters',
             name='owner',
             field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to=settings.AUTH_USER_MODEL, verbose_name='Пользователь'),
+        ),
+        migrations.AddField(
+            model_name='logs',
+            name='newsletter',
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='logs', to='newsletters.newsletters'),
         ),
     ]

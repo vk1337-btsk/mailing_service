@@ -1,7 +1,8 @@
+from datetime import timedelta
+
 from django.utils.translation import gettext as _
 
 from django.db import models
-from datetime import timedelta
 from apps.clients.models import Clients
 from apps.messages_.models import Messages
 
@@ -40,17 +41,17 @@ class Newsletters(models.Model):
     def __str__(self):
         return f'{self.name_newsletter}'
 
-    # def save(self, *args, **kwargs):
-    #     if not self.date_next_mailing:
-    #         if self.frequency_mailing == self.PeriodicityOfMailing.ONCE_DAY:
-    #             self.date_next_mailing = self.date_first_mailing + timedelta(days=1)
-    #         elif self.frequency_mailing == self.PeriodicityOfMailing.ONCE_WEEK:
-    #             self.date_next_mailing = self.date_first_mailing + timedelta(days=7)
-    #         elif self.frequency_mailing == self.PeriodicityOfMailing.ONCE_MONTH:
-    #             self.date_next_mailing = self.date_first_mailing + timedelta(days=30)
-    #         else:
-    #             self.date_next_mailing = self.date_first_mailing + timedelta(days=365)
-    #     super().save(*args, **kwargs)
+    def save(self, *args, **kwargs):
+        if not self.date_next_mailing:
+            if self.frequency_mailing == self.PeriodicityOfMailing.ONCE_DAY:
+                self.date_next_mailing = self.date_first_mailing + timedelta(days=1)
+            elif self.frequency_mailing == self.PeriodicityOfMailing.ONCE_WEEK:
+                self.date_next_mailing = self.date_first_mailing + timedelta(days=7)
+            elif self.frequency_mailing == self.PeriodicityOfMailing.ONCE_MONTH:
+                self.date_next_mailing = self.date_first_mailing + timedelta(days=30)
+            else:
+                self.date_next_mailing = self.date_first_mailing + timedelta(days=365)
+        super().save(*args, **kwargs)
 
     class Meta:
         verbose_name = 'Рассылка'
@@ -69,8 +70,9 @@ class Logs(models.Model):
     class StatusOfLogs(models.TextChoices):
         SUCCESS = "Успешно", _("Успешно")
         FAILED = "Безуспешно", _("Безуспешно")
+        PARTIALLY = "Частично успешно", _("Частично успешно")
 
-    newsletter = models.ForeignKey(Newsletters, on_delete=models.CASCADE, related_name='Рассылка')
+    newsletter = models.ForeignKey(Newsletters, on_delete=models.CASCADE, related_name='logs')
     date_last_mailing = models.DateTimeField(verbose_name='Дата последней попытки')
     status_mailing = models.CharField(choices=StatusOfLogs, verbose_name='Статус рассылки')
     response_mail_server = models.TextField(**NULLABLE, verbose_name='Ответ почтового сервера')

@@ -3,25 +3,25 @@
     "model": "clients.clients",
     "pk": 1,
     "fields": {
-        "first_name": "efef@mail.ru",
-        "last_name": "ge",
-        "middle_name": "fe",
-        "email": "efef@mail.ru",
-        "comment": "",
-        "birthday": "2024-05-20",
-        "owner": 4
+        "first_name": "Алексей",
+        "last_name": "Алексеев",
+        "middle_name": "Алексеевич",
+        "email": "client1_user1@test.com",
+        "comment": "Просто клиент",
+        "birthday": "1999-01-01",
+        "owner": 3
     }
 },
 {
     "model": "clients.clients",
     "pk": 2,
     "fields": {
-        "first_name": "Test 1",
-        "last_name": "Testov 1",
-        "middle_name": "Testovich 1",
-        "email": "test@test.com",
-        "comment": "Comment Test",
-        "birthday": "2024-05-20",
+        "first_name": "Борис",
+        "last_name": "Борисов",
+        "middle_name": "Борисович",
+        "email": "client2_user1@test.com",
+        "comment": "Просто клиент",
+        "birthday": "2000-01-01",
         "owner": 3
     }
 },
@@ -29,26 +29,91 @@
     "model": "clients.clients",
     "pk": 3,
     "fields": {
-        "first_name": "Test 2",
-        "last_name": "Testov 2",
-        "middle_name": "Testovich 2",
-        "email": "test@mail.ru",
-        "comment": "test",
-        "birthday": "2024-05-20",
-        "owner": 2
+        "first_name": "Василий",
+        "last_name": "Васильев",
+        "middle_name": "Васильевич",
+        "email": "general_client@test.com",
+        "comment": "Клиент с одинаковым email",
+        "birthday": "2000-01-01",
+        "owner": 3
     }
 },
 {
     "model": "clients.clients",
     "pk": 4,
     "fields": {
-        "first_name": "Test 3",
-        "last_name": "Testov 3",
-        "middle_name": "Testovich 3",
-        "email": "test3@mail.ru",
-        "comment": "Test",
-        "birthday": "2024-05-20",
-        "owner": 1
+        "first_name": "Василий",
+        "last_name": "Васильев",
+        "middle_name": "Васильевич",
+        "email": "general_client@test.com",
+        "comment": "Клиент с одинаковым email",
+        "birthday": "2000-01-01",
+        "owner": 4
+    }
+},
+{
+    "model": "clients.clients",
+    "pk": 5,
+    "fields": {
+        "first_name": "Григорий",
+        "last_name": "Григорьев",
+        "middle_name": "Григорьевич",
+        "email": "client1_user2@test.com",
+        "comment": "Просто клиент",
+        "birthday": "1999-01-01",
+        "owner": 4
+    }
+},
+{
+    "model": "clients.clients",
+    "pk": 6,
+    "fields": {
+        "first_name": "Денис",
+        "last_name": "Денисов",
+        "middle_name": "Денисович",
+        "email": "client2_user2@test.com",
+        "comment": "Просто клиент",
+        "birthday": "1999-01-01",
+        "owner": 4
+    }
+},
+{
+    "model": "clients.clients",
+    "pk": 7,
+    "fields": {
+        "first_name": "Роберт",
+        "last_name": "Робертов",
+        "middle_name": "Робертович",
+        "email": "bixajoc468@avastu.com",
+        "comment": "Рабочая временная почта для тестирования",
+        "birthday": "2000-01-01",
+        "owner": 3
+    }
+},
+{
+    "model": "clients.clients",
+    "pk": 8,
+    "fields": {
+        "first_name": "Максим",
+        "last_name": "Максимов",
+        "middle_name": "Максимович",
+        "email": "bixajoc468@avastu.com",
+        "comment": "Рабочая временная почта для тестирования",
+        "birthday": "2000-01-01",
+        "owner": 2
+    }
+},
+{
+    "model": "clients.clients",
+    "pk": 9,
+    "fields": {
+        "first_name": "Роберт",
+        "last_name": "Робертов",
+        "middle_name": "Робертович",
+        "email": "bixajoc468@avastu.com",
+        "comment": "Рабочая временная почта для тестирования",
+        "birthday": "2000-01-01",
+        "owner": 4
     }
 }
 ]

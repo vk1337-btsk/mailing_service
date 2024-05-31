@@ -143,9 +143,6 @@
                                     {{ object.message.text_letter }}
                                 </p>
                             </div>
-                            <div class="card-footer text-muted">
-                                Здесь будет доп.инфа
-                            </div>
                         </div>
                     </div>
 
@@ -156,20 +153,18 @@
                             <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Рассылка</th>
-                                <th scope="col">Дата последней попытки</th>
+                                <th scope="col">Дата рассылки</th>
                                 <th scope="col">Статус рассылки</th>
-                                <th scope="col">Ответ почтового сервера</th>
+                                <th scope="col">Отчет о рассылке</th>
                             </tr>
                             </thead>
                             <tbody>
-                            {% for attempt in object.status_mailing.all %}
+                            {% for log in object.logs.all %}
                             <tr>
                                 <th scope="row">{{ forloop.counter }}</th>
-                                <td>{{ attempt.newsletter }}</td>
-                                <td>{{ attempt.date_last_mailing }}</td>
-                                <td>{{ attempt.status_mailing }}</td>
-                                <td>{{ attempt.response_mail_server }}</td>
+                                <td>{{ log.date_last_mailing }}</td>
+                                <td>{{ log.status_mailing }}</td>
+                                <td>{{ log.response_mail_server }}</td>
                             </tr>
                             {% endfor %}
                             </tbody>
